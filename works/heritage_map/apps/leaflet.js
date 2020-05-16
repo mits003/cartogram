@@ -1,5 +1,5 @@
 // parameters of basemap
-const apiKey = 'dF42KrAcf2PsiXFOc261'
+const apiKey = 'your-api-key'
 const mapTile = "https://api.maptiler.com/maps/jp-mierune-streets/{z}/{x}/{y}.png?key="
 const attribution = '<a href="https://maptiler.jp/" target="_blank">© MIERUNE</a> <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>'
 
