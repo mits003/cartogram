@@ -1,9 +1,8 @@
 # About
-Works of weekly cartogram challenge.
-
-See on twitter [#weeklycartogram](https://twitter.com/hashtag/weeklycartogram?src=hashtag_click)
+Works of cartogram challenge.
 
 ## Tools
 - [QGIS](https://qgis.org/en/site/)
+- GDAL/ogr
 - Python
 - JavaScript
