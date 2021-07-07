@@ -1,5 +1,5 @@
 {
-    "name": "maplibregljs-starter",
+    "name": "tokaido53tsugi",
     "version": "1.14.0",
     "description": "",
     "main": "main.js",
@@ -8,7 +8,7 @@
         "dev": "webpack serve --mode=development"
     },
     "keywords": [],
-    "author": "Yasunori Kirimoto",
+    "author": "Mitsuha Miyake",
     "license": "ISC",
     "devDependencies": {
         "webpack": "^5.38.1",
