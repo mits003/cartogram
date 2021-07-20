@@ -21,16 +21,10 @@ def fetch_stations_coordinates() -> list:
     for coordinate_link in coordinate_links:
         coordinate_url = coordinate_link.find(
             class_="external text").get("href")
-        coordinate_src = re.search(r"params=.*region", coordinate_url).group()
-        coordinate = coordinate_src.replace(
-            "params=", "").replace("region", "")
-        lon_src = re.search(r"N.*E_", coordinate).group()
-        lon_elems = lon_src.replace("N_", "").replace(
-            "_E_", "").replace(".", "").split("_")
-        lon = lon_elems[0] + "." + lon_elems[1] + lon_elems[2]
-
-        lat_elems = coordinate.replace(lon_src, "").replace(".", "").split("_")
-        lat = lat_elems[0] + "." + lat_elems[1] + lat_elems[2]
+        response_coordinate = requests.get(coordinate_url)
+        soup_coordinate = BeautifulSoup(response_coordinate.content, "html.parser")
+        lat = soup_coordinate.find(class_="latitude p-latitude").text
+        lon = soup_coordinate.find(class_="longitude p-longitude").text
         stations.append((float(lon), float(lat)))
 
     return stations
@@ -42,7 +36,7 @@ def export_geojson(stations):
         df, geometry=gpd.points_from_xy(df.lon, df.lat))
 
     print(gdf)
-    filename = "tokaido.geojson"
+    filename = "./dist/data/tokaido.geojson"
     gdf.to_file(filename, driver='GeoJSON')
 
 

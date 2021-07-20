@@ -27,6 +27,15 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(geojson|json)$/,
+                use: {
+                    loader: 'json-loader',
+                    options: {
+                        name: './data/[name].[ext]'
+                    }
+                }
+            },
         ],
     },
     plugins: [
