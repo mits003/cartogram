@@ -6,10 +6,11 @@ from bs4 import BeautifulSoup  # BeautifulSoupクラスをインポート
 import geopandas as gpd
 import pandas as pd
 
+# tokaido53tsugi
 URL = "https://ja.wikipedia.org/wiki/%E6%9D%B1%E6%B5%B7%E9%81%93%E4%BA%94%E5%8D%81%E4%B8%89%E6%AC%A1"
 
 
-def fetch_stations_coordinates():
+def fetch_stations_coordinates() -> list:
     response = requests.get(URL)
 
     soup = BeautifulSoup(response.content, "html.parser")
@@ -30,17 +31,13 @@ def fetch_stations_coordinates():
 
         lat_elems = coordinate.replace(lon_src, "").replace(".", "").split("_")
         lat = lat_elems[0] + "." + lat_elems[1] + lat_elems[2]
-
         stations.append((float(lon), float(lat)))
-
-    print(stations)
 
     return stations
 
 
 def export_geojson(stations):
     df = pd.DataFrame(stations, columns=['lon', 'lat'])
-
     gdf = gpd.GeoDataFrame(
         df, geometry=gpd.points_from_xy(df.lon, df.lat))
 
