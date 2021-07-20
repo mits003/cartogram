@@ -9,3 +9,12 @@ body {
     z-index: 0;
     height: 100%;
 }
+
+.marker {
+    background-image: url('../img/paper-lantern-svgrepo-com.png');
+    background-size: cover;
+    width: 32.5px;
+    height: 50.3px;
+    /* border-radius: 50%; */
+    cursor: pointer;
+}
